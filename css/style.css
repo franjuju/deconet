@@ -1,0 +1,7 @@
+body {
+  background-color: black;
+  display: flex;
+}
+.circle-blowing {
+  margin: auto;
+}
