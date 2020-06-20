@@ -11,13 +11,31 @@
   </head>
     <body>
       <p style='color:white'><?php echo $nameBrain ?></p>
-        <?php
-            $results = mysql_query("SELECT * FROM next WHERE name=$nameBrain");    
-            while ($row = mysql_fetch_array($results))     
-            {       
-                $url = $row['url'];
-                echo $url; //Outputs: 2
-            }
-            ?>
+            <?php
+              $nameBrain = $_GET['name'];
+
+              try {
+                $objetPdo = new PDO('mysql:host=localhost;dbname=DB_deconnet', 'root', 'root');
+                $objetPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+              }
+              catch(PDOException $e)
+              {
+                  echo "Connection failed: " . $e->getMessage();
+              }
+            
+              //Préparation de la requête
+              $pdoStat = $objetPdo->prepare("SELECT * FROM emotion WHERE name = '$nameBrain'");
+              
+            
+              //execution de la requete
+              $executeIsOk = $pdoStat->execute();
+            
+              //Récupération des résultats
+              $data = $pdoStat->fetchAll();
+              // var_dump($data);
+              foreach ($data as $element) {
+                echo $element['description'];
+              } 
+        ?>
     </body>
 </html>

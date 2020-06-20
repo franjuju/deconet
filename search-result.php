@@ -30,9 +30,11 @@
           
             //Récupération des résultats
             $data = $pdoStat->fetchAll();
-            var_dump($data);
-            echo $data['description'];
-            ?>
+            // var_dump($data);
+            foreach ($data as $element) {
+              echo $element['description'];
+            } 
+        ?>
 
     </body>
 </html>
