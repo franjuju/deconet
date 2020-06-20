@@ -345,4 +345,60 @@ h2 {
 .description-emotion{
   color: #FFFFFF;
   font-family: 'Lato', sans-serif;
+  width: 600px;
+}
+.cta-container {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+.button-add {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #33CCFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+}
+.button-reduce {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #FF0066;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+.jauge {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 10px;
+  margin-bottom: 30px;
+  margin-top: 80px;
+  border-radius: 100px;
+}
+.jauge-detail {
+  position: relative;
+  height: 100%;
+  width: 14%;
+  border-radius: 100px;
+  
+}
+
+.hider {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  background-color: #1E1E1E;
+}
+.close-search {
+  position: absolute;
+  width: 25px;
+  top: 30px;
+  left: 30px;
 }
