@@ -1,5 +1,5 @@
 <?php
-    $nameSearch = $_GET['name'];
+    $name = $_GET['name'];
 
     try {
       $objetPdo = new PDO('mysql:host=localhost;dbname=DB_deconnet', 'root', 'root');
@@ -11,7 +11,7 @@
     }
   
     //Préparation de la requête
-    $pdoStat = $objetPdo->prepare("SELECT * FROM emotion WHERE name = '$nameSearch'");
+    $pdoStat = $objetPdo->prepare("SELECT * FROM emotion WHERE name = '$name'");
     
   
     //execution de la requete
@@ -34,6 +34,6 @@
   </head>
     <body>
       <h1><?php foreach ($data as $element) {echo $element['name'];} ?></h1>
-      <p><?php foreach ($data as $element) {echo $element['description'];} ?></p>
+      <p class="description-emotion"><?php foreach ($data as $element) {echo $element['description'];} ?></p>
     </body>
 </html>

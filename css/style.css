@@ -337,3 +337,12 @@ h2 {
 .form__field:required, .form__field:invalid {
   box-shadow: none;
 }
+
+
+
+
+
+.description-emotion{
+  color: #FFFFFF;
+  font-family: 'Lato', sans-serif;
+}
