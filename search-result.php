@@ -8,20 +8,31 @@
     <link rel="stylesheet" href="css/style-pauline.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
-    <body>
-      <div class="home-wrapper">
+    <body style="background-color: white">
         <?php
-            $name = $_POST['name'];
-            $bdd = new PDO('mysql:host=localhost;dbname=DB_Deconnet;charset=utf8', 'root', 'root');
-            $contenu = $bdd->query('SELECT * FROM emotion WHERE name = :name');
-            while($donnees = $contenu->fetch())
-              {
-                echo $donnees['name'];
-              } ?> 
-              </br>
-              <?php echo $donnees['description']
-              ?>
-        
-      </div>
+            $nameSearch = $_GET['name'];
+
+            try {
+              $objetPdo = new PDO('mysql:host=localhost;dbname=DB_deconnet', 'root', 'root');
+              $objetPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+            }
+            catch(PDOException $e)
+            {
+                echo "Connection failed: " . $e->getMessage();
+            }
+          
+            //Préparation de la requête
+            $pdoStat = $objetPdo->prepare("SELECT * FROM emotion WHERE name = '$nameSearch'");
+            
+          
+            //execution de la requete
+            $executeIsOk = $pdoStat->execute();
+          
+            //Récupération des résultats
+            $data = $pdoStat->fetchAll();
+            var_dump($data);
+            echo $data['description'];
+            ?>
+
     </body>
 </html>
